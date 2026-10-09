@@ -1,0 +1,10 @@
+setting,Baseline (starter: RF + prototype),Best (Group 2)
+Madrid — spatial-block 5-fold CV,0.574 ± 0.030,0.652 ± 0.026
+Madrid — random 5-fold CV,0.618 ± 0.005,0.736 ± 0.003
+Amsterdam — zero-shot (no labels),0.334,0.624
+Amsterdam — n = 5 per class,0.502 ± 0.047,0.654 ± 0.021
+Amsterdam — n = 25 per class,0.593 ± 0.018,0.687 ± 0.019
+Amsterdam — n = 50 per class,0.607 ± 0.011,0.723 ± 0.004
+Amsterdam — n = 100 per class,0.617 ± 0.008,0.740 ± 0.004
+Amsterdam — n = 200 per class,0.615 ± 0.004,0.757 ± 0.002
+Amsterdam — average of the 5 n,0.587,0.712

@@ -1,0 +1,95 @@
+
+===== cell 1/9 =====
+[19:07:34] data: . | 24 CPU threads | XGBoost cuda | CatBoost GPU
+----- cell 1 done in 6s
+
+===== cell 2/9 =====
+[19:07:44] Madrid: 76,263 pixels, 3,147,969 clean pixel-years
+[19:07:46] Amsterdam: 25,992 pixels, 1,058,169 clean pixel-years
+[19:07:46] broken scenes removed: ['LE07_L2SP_198023_20020417_20200916_02_T2', 'LT05_L2SP_199023_19961109_20211124_02_T1', 'LT05_L2SP_201032_19951207_20211123_02_T2']
+----- cell 2 done in 13s
+
+===== cell 3/9 =====
+[19:09:28] Madrid: 321 features (101s)
+[19:10:05] Amsterdam: 321 features (37s)
+----- cell 3 done in 138s
+
+===== cell 4/9 =====
+[19:10:15] RICH = 120 features, TRANSFER = 140 features
+----- cell 4 done in 11s
+
+===== cell 5/9 =====
+[19:10:15] pixels within ±2 years of a boundary: 20.7%
+[19:11:52]   E0 current weights   : 0.6516 ± 0.0255  folds [0.622 0.665 0.621 0.664 0.686]
+[19:13:29]   E1 label-noise weights: 0.6512 ± 0.0261  folds [0.62  0.665 0.621 0.665 0.686]
+[19:13:29] E1 Madrid paired gain -0.0004 (SE 0.0004) -> reject
+----- cell 5 done in 193s
+
+===== cell 6/9 =====
+        C1    C2    C3    C4
+DEV   2936  4232  3045  1251
+TEST  4632  4570  3700  1626
+[19:13:32] smoothing tuned on Madrid OOF: {'alpha': 0.5, 'size': 5}
+[19:13:47] base: zero-shot 0.593 | BBSE Amsterdam class mix [0.185 0.359 0.261 0.194]
+[19:14:02] noise: zero-shot 0.577 | BBSE Amsterdam class mix [0.125 0.427 0.244 0.204]
+[19:14:02] (for information only, never used: true Amsterdam mix [0.291 0.339 0.26  0.111])
+----- cell 6 done in 34s
+
+===== cell 7/9 =====
+[19:17:10]   [DEV] n =   5 done (187s)
+[19:20:19]   [DEV] n =  25 done (190s)
+[19:23:30]   [DEV] n =  50 done (191s)
+[19:26:47]   [DEV] n = 100 done (196s)
+[19:30:03]   [DEV] n = 200 done (196s)
+[19:30:03] DEV experiments finished in 16.0 min
+n                           5     25     50    100    200   mean    far
+cfg                                                                    
+E0 current              0.635  0.694  0.727  0.747  0.766  0.714  0.467
+E1 label-noise weights  0.634  0.697  0.728  0.747  0.767  0.715  0.473
+E2a BBSE all n          0.637  0.696  0.724  0.740  0.760  0.711  0.470
+E2b BBSE n>=25          0.635  0.696  0.724  0.740  0.760  0.711  0.469
+E2c EM all n            0.621  0.694  0.727  0.747  0.766  0.711  0.464
+E3 agreement filter     0.637  0.694  0.727  0.747  0.766  0.714  0.468
+E4a fine-tune 10%       0.633  0.691  0.727  0.745  0.765  0.712  0.467
+E4b fine-tune 50%       0.632  0.695  0.727  0.748  0.766  0.714  0.467
+E5 no smoothing         0.617  0.679  0.707  0.726  0.742  0.694  0.462
+----- cell 7 done in 960s
+
+===== cell 8/9 =====
+                candidate  DEV gain    2×SE  far-pixel gain decision
+0  E1 label-noise weights    0.0007  0.0022          0.0058   reject
+1          E2a BBSE all n   -0.0022  0.0025          0.0029   reject
+2          E2b BBSE n>=25   -0.0026  0.0018          0.0021   reject
+3            E2c EM all n   -0.0027  0.0028         -0.0033   reject
+4     E3 agreement filter    0.0004  0.0004          0.0010    ADOPT
+5       E4a fine-tune 10%   -0.0017  0.0012          0.0000   reject
+6       E4b fine-tune 50%   -0.0001  0.0013         -0.0004   reject
+7         E5 no smoothing   -0.0196  0.0014         -0.0049   reject
+[19:30:03] combined configuration: {'w': 'base', 'wfrac': 0.25, 'agree': True, 'prior': 'em25', 'smooth': True}
+[19:31:55]   [DEV-combined] n =   5 done (112s)
+[19:35:20]   [DEV-combined] n =  25 done (205s)
+[19:38:45]   [DEV-combined] n =  50 done (205s)
+[19:42:12]   [DEV-combined] n = 100 done (207s)
+[19:45:44]   [DEV-combined] n = 200 done (212s)
+[19:45:44] combined on DEV: gain +0.0004 (2SE 0.0004), far +0.0010
+----- cell 8 done in 941s
+
+===== cell 9/9 =====
+[19:49:09]   [TEST] n =   5 done (205s)
+[19:52:34]   [TEST] n =  25 done (205s)
+[19:56:01]   [TEST] n =  50 done (207s)
+[19:59:28]   [TEST] n = 100 done (207s)
+[20:03:00]   [TEST] n = 200 done (212s)
+            f1                sd               far       
+cfg E0 current  FINAL E0 current  FINAL E0 current  FINAL
+n                                                        
+5        0.652  0.648      0.031  0.035      0.648  0.644
+25       0.705  0.705      0.008  0.008      0.703  0.703
+50       0.717  0.717      0.011  0.011      0.717  0.717
+100      0.729  0.729      0.008  0.008      0.731  0.731
+200      0.748  0.748      0.004  0.004      0.760  0.760
+[20:03:00] TEST: FINAL vs current gain -0.0007 ± 0.0010 (far -0.0007)
+[20:03:00] Madrid spatial CV for reference: current 0.652, label-noise 0.651
+----- cell 9 done in 1036s
+
+ALL CELLS FINISHED

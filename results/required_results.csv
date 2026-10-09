@@ -1,0 +1,9 @@
+city,setting,labelled pixels,macro F1 mean,macro F1 std
+Madrid,spatial-block 5-fold CV,all,0.6516,0.0255
+Madrid,random 5-fold CV,all,0.7364,0.0026
+Amsterdam,zero-shot,0,0.6235,
+Amsterdam,n = 5 per class (10 draws),20,0.6539,0.021
+Amsterdam,n = 25 per class (10 draws),100,0.687,0.0193
+Amsterdam,n = 50 per class (10 draws),200,0.7228,0.0039
+Amsterdam,n = 100 per class (10 draws),400,0.7404,0.004
+Amsterdam,n = 200 per class (10 draws),800,0.7568,0.0023

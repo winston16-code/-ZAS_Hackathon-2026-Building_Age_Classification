@@ -1,0 +1,17 @@
+# organisers' data and intermediate files
+data/*
+!data/README.md
+*.parquet
+# large / regenerated outputs
+group2_outputs/
+exp03_outputs/
+stage1_madrid*.joblib
+catboost_info/
+logs/
+# python / jupyter
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+venv/
+# office lock files
+~$*

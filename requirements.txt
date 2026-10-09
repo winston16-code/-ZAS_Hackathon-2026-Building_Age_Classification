@@ -1,0 +1,16 @@
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.0
+scikit-learn==1.8.0
+pyarrow==17.0.0
+matplotlib==3.10.8
+lightgbm==4.6.0
+xgboost==3.1.3
+catboost==1.2.10
+joblib==1.5.3
+nbformat==5.10.4
+nbconvert
+jupyterlab
+ipykernel
+# PyTorch with CUDA is installed separately (optional, only for the MLP comparison):
+#   pip install torch --index-url https://download.pytorch.org/whl/cu126

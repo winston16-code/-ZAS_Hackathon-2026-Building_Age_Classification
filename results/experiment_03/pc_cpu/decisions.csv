@@ -1,0 +1,9 @@
+candidate,DEV gain,2×SE,far-pixel gain,decision
+E1 label-noise weights,0.0001,0.0018,0.0039,reject
+E2a BBSE all n,-0.0115,0.0033,-0.005,reject
+E2b BBSE n>=25,-0.0091,0.0023,-0.0024,reject
+E2c EM all n,-0.0039,0.0041,-0.0037,reject
+E3 agreement filter,-0.0009,0.002,-0.0002,reject
+E4a fine-tune 10%,-0.0017,0.0016,-0.0019,reject
+E4b fine-tune 50%,-0.0009,0.002,-0.0027,reject
+E5 no smoothing,-0.0202,0.0013,-0.0061,reject
